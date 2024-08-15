@@ -4,6 +4,10 @@ This is a wrapper around the ssd1306 driver to make things a bit easier to use.
 ## Demo
 ![Controller demo](.demo/display_demo.gif)
 
+## Hardware
+- Raspberry Pi Pico
+- SSD1306 - IZOKEE 0.96" I2C IIC 12864 128X64 Pixel OLED LCD Display
+
 ## DisplayController Class
 ### Methods
 #### `__init__(self, scl_pin, sda_pin, width=128, height=64, frequency=200000, progress_bar_char="|", verbose=False)`
