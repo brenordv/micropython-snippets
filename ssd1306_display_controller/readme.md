@@ -1,12 +1,23 @@
 # SSD1306 Micropython Display Controller
 This is a wrapper around the ssd1306 driver to make things a bit easier to use.
 
+To use this, copy the `lib` folder to your project.
+
 ## Demo
 ![Controller demo](.demo/display_demo.gif)
 
 ## Hardware
 - Raspberry Pi Pico
 - SSD1306 - IZOKEE 0.96" I2C IIC 12864 128X64 Pixel OLED LCD Display
+
+### Raspberry Pi Pico Pinout
+![Raspberry_Pi_Pico_Pinout.png](.assets%2FRaspberry_Pi_Pico_Pinout.png)
+
+### SSD1306 Pinout
+![ssd1306_pinout.png](.assets%2Fssd1306_pinout.png)
+
+### SSD1306 Datasheet
+[SSD1306.pdf](.assets%2FSSD1306.pdf)
 
 ## DisplayController Class
 ### Methods
