@@ -14,9 +14,12 @@ player.set_volume(30)
 player.play(1) # This should play 001.mp3 - first file on the SD card
 
 # Wait and check if it's playing
+utime.sleep(2)
 for _ in range(10):
     utime.sleep(1)
     is_playing = player.is_playing()
     print(f"Is playing: {is_playing}")
+    if not is_playing:
+        break
 
 print("Done!")

@@ -55,4 +55,3 @@ Checks if a track is currently playing.
 
 # Attributions
 Specs images from this repo: https://github.com/Mark-MDO47/AudioPlayer-YX5200
-Datasheet: https://www.electroschematics.com/wp-content/uploads/2019/07/YX5200-24SS-DataSheet.pdf
