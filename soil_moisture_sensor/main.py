@@ -1,6 +1,6 @@
 import utime
 
-from lib.SoilMoistureSensorController import SoilMoistureSensorController
+from lib.soil_moisture_sensor_controller import SoilMoistureSensorController
 
 sensor_controller = SoilMoistureSensorController(pin=26)
 

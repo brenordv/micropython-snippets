@@ -2,7 +2,7 @@ from machine import Pin, PWM
 import utime
 
 
-class Sg90ServoController:
+class ServoMotorController:
     def __init__(self, pin_number, initial_angle=90, frequency=50, min_duty=1640, max_duty=8190, current_angle=90):
         self.servo = PWM(Pin(pin_number))
         self.servo.freq(frequency)  # 50Hz frequency for SG90

@@ -1,5 +1,4 @@
 from machine import ADC, Pin
-import utime
 
 
 class SoilMoistureSensorController:
