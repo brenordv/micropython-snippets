@@ -3,10 +3,14 @@ import utime
 
 
 class AudioPlayer:
-    def __init__(self, uart, tx_pin, rx_pin, busy_pin, baud_rate=9600, verbose=False):
+    def __init__(self, uart, tx_pin, rx_pin, busy_pin, baud_rate=9600, initial_volume=30, verbose=False):
         self.verbose = verbose
         self.uart = UART(uart, baudrate=baud_rate, tx=Pin(tx_pin), rx=Pin(rx_pin))
         self.busy_pin = Pin(busy_pin, Pin.IN)
+
+        if initial_volume is not None and initial_volume >= 0:
+            self.set_volume(initial_volume)
+
         if self.verbose:
             print(f"AudioPlayer initialized with UART {uart}, TX: {tx_pin}, RX: {rx_pin}, BUSY: {busy_pin}")
 
