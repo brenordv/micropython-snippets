@@ -8,18 +8,26 @@ To use this, copy the `lib` folder to your project.
 
 ## Hardware
 - YX5200 DF Player Mini
-- ESP32 WROOM32 Dev Board (or compatible)
-(For some reason, this didn't work with a Raspberry Pi Pico)
+- Raspberry Pi Pico
 
-### ESP32 Pinout
-![ESP32-Pinout.jpg](.specs%2FESP32-Pinout.jpg)
+### Raspberry Pi Pico Pinout
+I made it work with the Pico using the following pins:
+- YX5200 VCC -> Pico VSYS
+- YX5200 GND -> Pico GND (any)
+- YX5200 RX -> Pico TX UART 0 (GPIO 16)
+- YX5200 TX -> Pico RX UART 0 (GPIO 17)
+- YX5200 BUSY -> Pico GPIO 22
+- YX5200 SPK1 -> Speaker Positive
+- YX5200 SPK2 -> Speaker Negative
+
+![Raspberry_Pi_Pico_Pinout.png](.assets%2FRaspberry_Pi_Pico_Pinout.png)
 
 ### DF Player Pinout
-![YX5200_MP3player.png](.specs%2FYX5200_MP3player.png)
-![YX5200_MP3player_pinouts.png](.specs%2FYX5200_MP3player_pinouts.png)
+![YX5200_MP3player.png](.assets%2FYX5200_MP3player.png)
+![YX5200_MP3player_pinouts.png](.assets%2FYX5200_MP3player_pinouts.png)
 
 ### DF Player Datasheet
-[DFPlayer Mini Manual.pdf](.specs%2FDFPlayer%20Mini%20Manual.pdf)
+[DFPlayer Mini Manual.pdf](.assets%2FDFPlayer%20Mini%20Manual.pdf)
 
 ## AudioPlayer Class
 ### Methods
