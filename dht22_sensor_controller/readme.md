@@ -1,4 +1,4 @@
-# Temperature and Humidity Sensor Controller
+# [DHT22] Temperature and Humidity Sensor Controller
 This project is a simple controller for a temperature and humidity sensor.
 
 ## Hardware
