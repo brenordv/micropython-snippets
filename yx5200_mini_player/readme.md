@@ -4,7 +4,8 @@ This is a simple implementation that allows you to play audio files from a micro
 
 Right now you can only play a file and use the busy pin to check if file is playing.
 
-To use this, copy the `lib` folder to your project.
+## Installation
+Just copy the `lib` folder to your board.
 
 ## Hardware
 - YX5200 DF Player Mini

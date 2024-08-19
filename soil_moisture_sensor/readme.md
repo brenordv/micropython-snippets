@@ -5,7 +5,8 @@ the moisture level of a plant.
 Right now it doesn't do much, but it calculates the percentage of moisture in the soil and prints it to the
 serial console.
 
-To use this, copy the `lib` folder to your project.
+## Installation
+Just copy the `lib` folder to your board.
 
 ## Hardware
 - Raspberry Pi Pico

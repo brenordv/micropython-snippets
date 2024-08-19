@@ -1,7 +1,8 @@
 # HC-SR501 IR Motion Detection Controller
 A super simple controller for the HC-SR501 IR Motion Detection Sensor.
 
-To use this, copy the `lib` folder to your project.
+## Installation
+Just copy the `lib` folder to your board.
 
 ## Hardware
 - HC-SR501 IR Motion Detection Sensor

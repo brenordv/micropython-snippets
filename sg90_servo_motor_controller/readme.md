@@ -2,7 +2,8 @@
 Simple class that controls a single SG90 micro servo motor.
 There is nothing special about this class, but it's always useful to have this kind of code snippet ready to use.
 
-To use this, copy the `lib` folder to your project.
+## Installation
+Just copy the `lib` folder to your board.
 
 ## Hardware
 - SG90 micro servo motor

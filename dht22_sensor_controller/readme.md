@@ -1,6 +1,9 @@
 # [DHT22] Temperature and Humidity Sensor Controller
 This project is a simple controller for a temperature and humidity sensor.
 
+## Installation
+Just copy the `lib` folder to your board.
+
 ## Hardware
 - DHT22 (aka: AM2302) Sensor
 - Raspberry Pi Pico

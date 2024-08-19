@@ -4,7 +4,8 @@ It is a low-cost sensor that is easy to use and can be used in a variety of appl
 
 The class UltraSonicDistanceSensor has a couple of convenience methods to get the distance in centimeters and inches.
 
-To use this, copy the `lib` folder to your project.
+## Installation
+Just copy the `lib` folder to your board.
 
 ## Hardware
 - Raspberry Pi Pico

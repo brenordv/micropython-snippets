@@ -1,7 +1,8 @@
 # SSD1306 Micropython Display Controller
 This is a wrapper around the ssd1306 driver to make things a bit easier to use.
 
-To use this, copy the `lib` folder to your project.
+## Installation
+Just copy the `lib` folder to your board.
 
 ## Demo
 ![Controller demo](.demo/display_demo.gif)
