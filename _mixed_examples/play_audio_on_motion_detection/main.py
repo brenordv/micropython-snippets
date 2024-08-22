@@ -23,7 +23,6 @@ for motion_detected in sensor.continuous_motion_detection():
     if not motion_detected:
         continue
 
-    if motion_detected:
-        detected += 1
-        print(f"Motion detected! - {detected:010d}", end="\r")
-        player.play_sync(1)
+    detected += 1
+    print(f"Motion detected! - {detected:010d}", end="\r")
+    player.play_sync(1)
