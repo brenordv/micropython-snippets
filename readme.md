@@ -12,3 +12,4 @@ future projects. I hope this repo helps you as much as it helps me.
 ## Important notes
 - Unless specified otherwise, consider all examples using Micropython v1.23.0 (2024-06-02) on a Raspberry Pi Pico.
 - All snippets/classes as provided AS-IS, and although I've tested all of them, It was not a thorough test. So, please use them at your own risk. No warranty/guarantee is provided.
+- I've added the Pico Pinout image in each snippet folder, so everything you need is inside the  main folder of the sensor you want.
