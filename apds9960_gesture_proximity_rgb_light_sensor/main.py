@@ -1,7 +1,7 @@
 from machine import I2C, Pin
 
 
-from lib.apds9960_controller import GestureDetectionController, ColorDetectionController, LightSensorController, \
+from lib.apds9960_controller import GestureDetectionSensor, ColorDetectionController, LightSensorController, \
     ProximitySensorController
 
 # Set up I2C
@@ -9,7 +9,7 @@ i2c = I2C(0, sda=Pin(4), scl=Pin(5), freq=400000)
 
 # Initialize the controllers
 mode = 4
-gesture_controller = GestureDetectionController(i2c)
+gesture_controller = GestureDetectionSensor(i2c)
 color_controller = ColorDetectionController(i2c)
 light_controller = LightSensorController(i2c)
 proximity_controller = ProximitySensorController(i2c)

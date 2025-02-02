@@ -1,6 +1,6 @@
-from lib.temp_and_humidity_controller import TempAndHumidityController
+from lib.temp_and_humidity_sensor import TempAndHumiditySensor
 
-sensor = TempAndHumidityController(9)
+sensor = TempAndHumiditySensor(9)
 
 print("Reading sensor values...")
 for success, temperature, humidity, timestamp in sensor.continuous_measurement():

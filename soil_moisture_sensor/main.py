@@ -1,8 +1,8 @@
 import utime
 
-from lib.soil_moisture_sensor_controller import SoilMoistureSensorController
+from lib.soil_moisture_sensor_sensor import SoilMoistureSensor
 
-sensor_controller = SoilMoistureSensorController(pin=26)
+sensor_controller = SoilMoistureSensor(pin=26)
 
 # Main program
 print("Sensor warming up...")

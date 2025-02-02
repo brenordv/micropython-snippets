@@ -1,6 +1,6 @@
-from lib.ir_motion_sensor_controller import InfraredMotionSensorController
+from lib.ir_motion_sensor_sensor import InfraredMotionSensor
 
-sensor = InfraredMotionSensorController(sensor_pin=18)
+sensor = InfraredMotionSensor(sensor_pin=18)
 
 detected = 0
 for motion_detected in sensor.continuous_motion_detection():

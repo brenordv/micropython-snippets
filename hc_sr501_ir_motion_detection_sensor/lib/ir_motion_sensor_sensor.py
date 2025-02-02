@@ -1,7 +1,7 @@
 from machine import Pin
 import utime
 
-class InfraredMotionSensorController:
+class InfraredMotionSensor:
     def __init__(self, sensor_pin):
         self.sensor_pin = Pin(sensor_pin, Pin.IN)
 

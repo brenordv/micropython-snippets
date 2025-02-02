@@ -1,6 +1,6 @@
 # Controls (changes) Windows Desktops by using gestures
 This example meshes two snippets:
-- [APDS9960 Gesture, Proximity, RGB, and Light controller](../../apds9960_gesture_proximity_rgb_light_controller/readme.md)
+- [APDS9960 Gesture, Proximity, RGB, and Light controller](../../apds9960_gesture_proximity_rgb_light_sensor/readme.md)
 - [Using Pico as a HID](../../pico_as_hid/readme.md)
 
 The difference is that instead of just opening the `notepad`, and writing some text, in this snippet, we are changing
