@@ -8,7 +8,7 @@ class Dht22Error(BaseException):
         super().__init__(f"Failed to read sensor: {message}")
 
 
-class TempAndHumidityController:
+class TempAndHumiditySensor:
     def __init__(self, pin, temp_offset=0, humidity_offset=0):
         self.sensor = dht.DHT22(Pin(pin))
         self.temp_offset = temp_offset

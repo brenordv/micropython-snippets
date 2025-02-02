@@ -1,6 +1,6 @@
-from lib.temperature_controller import TemperatureController
+from lib.temperature_controller import TemperatureSensor
 
-sensor = TemperatureController(28)
+sensor = TemperatureSensor(28)
 
 print("Reading sensor values...")
 for success, temperature, timestamp in sensor.continuous_measurement():

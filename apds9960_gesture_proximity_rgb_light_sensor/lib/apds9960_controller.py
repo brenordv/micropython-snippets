@@ -5,7 +5,7 @@ from lib.color_identifier import ColorIdentifier
 from lib.drivers.apds9960 import AGAIN_16
 
 
-class GestureDetectionController:
+class GestureDetectionSensor:
     def __init__(self, i2c):
         self.sensor = APDS9960(i2c)
         self.sensor.enable_gesture_sensor()

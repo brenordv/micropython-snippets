@@ -1,4 +1,4 @@
-# Soil Moisture Monitor
+# Capacitive Soil Moisture Monitor
 This project is a soil moisture monitor that uses a Raspberry Pi Pico and a soil moisture sensor to monitor 
 the moisture level of a plant. 
 
@@ -14,6 +14,18 @@ Just copy the `lib` folder to your board.
 
 > Didn't find a datasheet for this sensor and pinout is pretty straight forward. 
 > Connect the VCC to 3.3V, GND to GND, and the signal pin to GP26 (Pico) or some other ADC pin.
+
+### Sensor details
+Since I couldn't find the datasheet, here's a couple of details about this sensor.
+
+- Parcel Dimensions: 17.6 x 16 x 1.7 cm; 30 g
+- Date First Available: April 24 2019
+- Manufacturer: KeeYees
+- Place of Business: Shenzhenshi, Guangdongsheng 518109,CN
+- ASIN: B07R174TM1
+- Manufacturer reference: KYES516
+- Amazon link [not an affiliate link]: https://www.amazon.ca/dp/B07R174TM1
+
 
 ### Raspberry Pi Pico Pinout
 ![Raspberry_Pi_Pico_Pinout.png](.assets%2FRaspberry_Pi_Pico_Pinout.png)

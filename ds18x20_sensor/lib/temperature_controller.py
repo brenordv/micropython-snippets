@@ -6,7 +6,7 @@ import lib.drivers.onewire as onewire
 import lib.drivers.ds18x20 as ds18x20
 
 
-class TemperatureController:
+class TemperatureSensor:
     def __init__(self, pin, temp_offset=0):
         self.pin = Pin(pin)
         self.ds_sensor = ds18x20.DS18X20(onewire.OneWire(self.pin))
