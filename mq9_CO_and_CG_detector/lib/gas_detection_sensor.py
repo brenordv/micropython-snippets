@@ -12,7 +12,7 @@ class GasDetectionSensor:
         :param r0: Sensor resistance in clean air in kΩ (default: None, must be calibrated).
         :param m: Slope of the calibration curve (default: -0.5; example value, adjust for your gas type).
         :param b: Intercept of the calibration curve (default: 1.0; example value, adjust for your gas type).
-        :param voltage_ref: Reference voltage for ADC conversion (default: 5.0V to match sensor circuit).
+        :param voltage_ref: Reference voltage for ADC conversion (default: 3.3V to match sensor circuit).
         :param adc_max: Maximum ADC value (default: 65535 for 16-bit ADC).
         :param err_return_value: Value returned on error (default: 0).
         """

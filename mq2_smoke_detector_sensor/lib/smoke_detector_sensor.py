@@ -3,7 +3,7 @@ import math
 
 
 class SmokeDetectorSensor:
-    def __init__(self, pin, rl_value=5.0, r0=None, m=-0.45, b=1.4, voltage_ref=5.0, adc_max=65535, err_return_value=0):
+    def __init__(self, pin, rl_value=5.0, r0=None, m=-0.45, b=1.4, voltage_ref=3.3, adc_max=65535, err_return_value=0):
         """
         Initialize the MQ-2 gas detection sensor with recommended calibration values.
 
@@ -12,7 +12,7 @@ class SmokeDetectorSensor:
         :param r0: Sensor resistance in clean air (default: None, must be calibrated).
         :param m: Slope of the calibration curve (default: -0.45).
         :param b: Intercept of the calibration curve (default: 1.4).
-        :param voltage_ref: ADC reference voltage (default: 5.0V).
+        :param voltage_ref: ADC reference voltage (default: 3.3V).
         :param adc_max: Maximum ADC value (default: 65535 for 16-bit ADC).
         :param err_return_value: Value returned on error (default: 0).
         """
