@@ -1,7 +1,7 @@
 from machine import ADC, Pin
 
 
-class SoilMoistureSensor:
+class CapacitiveSoilMoistureSensor:
     def __init__(self, pin, max_value=57582, min_value=26054):
         self.soil_sensor = ADC(Pin(pin))
 
