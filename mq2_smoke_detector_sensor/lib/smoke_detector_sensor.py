@@ -3,7 +3,7 @@ import math
 
 
 class SmokeDetectorSensor:
-    def __init__(self, pin, rl_value=5.0, r0=None, m=-0.45, b=1.4, voltage_ref=3.3, adc_max=65535, err_return_value=0):
+    def __init__(self, pin, rl_value=5.0, r0=0.5, m=-0.45, b=1.4, voltage_ref=3.3, adc_max=65535, err_return_value=0):
         """
         Initialize the MQ-2 gas detection sensor with recommended calibration values.
 
@@ -17,7 +17,7 @@ class SmokeDetectorSensor:
         :param err_return_value: Value returned on error (default: 0).
         """
         self.rl_value = rl_value
-        self.r0 = r0
+        self.r0 = r0 # 0.5 was my personal calibration. You should calibrate your sensor.
         self.m = m
         self.b = b
         self.voltage_ref = voltage_ref
@@ -58,6 +58,7 @@ class SmokeDetectorSensor:
     def read_ppm(self, raw_value=None):
         """
         Convert the raw ADC value to an estimated gas concentration in PPM.
+        From local testing. Anything above 30.59 means some smoke.
 
         The process involves:
           1. Converting the raw value to a voltage.
@@ -80,6 +81,7 @@ class SmokeDetectorSensor:
         """
         Convert the raw ADC value to a normalized value between 0.0 and 1.0,
         where 1.0 represents the maximum ADC value.
+        From local testing. Anything above 0.65 means some smoke.
         """
         raw_value = self.read_raw_value() if raw_value is None else raw_value
         return raw_value / self.adc_max

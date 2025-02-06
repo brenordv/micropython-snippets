@@ -3,7 +3,7 @@ import math
 
 
 class GasDetectionSensor:
-    def __init__(self, pin, rl_value=10.0, r0=None, m=-0.5, b=1.0, voltage_ref=3.3, adc_max=65535, err_return_value=0):
+    def __init__(self, pin, rl_value=10.0, r0=19.0, m=-0.5, b=1.0, voltage_ref=3.3, adc_max=65535, err_return_value=0):
         """
         Initialize the gas detection sensor with updated calibration parameters based on the MQ-9 datasheet.
 
@@ -17,7 +17,7 @@ class GasDetectionSensor:
         :param err_return_value: Value returned on error (default: 0).
         """
         self.rl_value = rl_value
-        self.r0 = r0  # Should be calibrated in clean air
+        self.r0 = r0  # 19.0 was my personal calibration. You should calibrate your sensor.
         self.m = m
         self.b = b
         self.voltage_ref = voltage_ref
@@ -58,6 +58,9 @@ class GasDetectionSensor:
     def read_ppm(self, raw_value=None):
         """
         Convert the raw ADC value to an estimated gas concentration in PPM using the sensor's calibration curve.
+
+        From my local testing, 1243.12 PPM is a good threshold for detecting gas.
+
         1. Convert raw value to voltage.
         2. Calculate sensor resistance.
         3. Use the log-log calibration: log10(ppm) = (log10(Rs/R0) - b) / m.
@@ -77,6 +80,7 @@ class GasDetectionSensor:
     def read_normalized(self, raw_value=None):
         """
         Convert the raw ADC value to a normalized value between 0.0 and 1.0.
+        From my local testing, 0.65 is a good threshold for detecting gas.
         """
         raw_value = self.read_raw_value() if raw_value is None else raw_value
         return raw_value / self.adc_max
