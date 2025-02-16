@@ -1,15 +1,15 @@
 # MicroPython Snippets
-I'll save in this repo snippets of code that I use when creating something with Micro Python.
 
-To know what each snippet does, please refer to the readme file inside the folder.
+I save snippets of code in this repository that I use when working with MicroPython.
 
-One of the main reasons I created this repo is because I always lost the code from previous projects, and I had to 
-rewrite everything from scratch. So, I decided to create some semi-decent code snippets that I can reuse in 
-future projects. I hope this repo helps you as much as it helps me.
+To understand what each snippet does, please refer to the README file inside the corresponding folder.
 
+One of the main reasons I created this repository is that I frequently lose code from previous projects and have to rewrite everything from scratch. To avoid this, I decided to create some well-structured code snippets that I can reuse in future projects. I hope this repository helps you as much as it helps me.
 
+It's worth noting that not all code snippets are related to sensors. Some are more generic or encapsulate specific functionalities, such as loading a configuration file, handling WiFi connections, making HTTP requests, and more.
 
-## Important notes
-- Unless specified otherwise, consider all examples using Micropython v1.23.0 (2024-06-02) on a Raspberry Pi Pico.
-- All snippets/classes as provided AS-IS, and although I've tested all of them, It was not a thorough test. So, please use them at your own risk. No warranty/guarantee is provided.
-- I've added the Pico Pinout image in each snippet folder, so everything you need is inside the  main folder of the sensor you want.
+## Important Notes
+
+- Unless specified otherwise, all examples assume MicroPython v1.23.0 (2024-06-02) running on a Raspberry Pi Pico.
+- All snippets and classes are provided **AS-IS**. Although I have tested them, they have not undergone thorough testing. Use them at your own risk. No warranty or guarantee is provided.
+- Each snippet folder includes a Pico pinout image, so everything you need is inside the main folder of the sensor you are working with.
