@@ -11,9 +11,6 @@ Just copy the `lib` folder to your board.
 ## Hardware
 - Raspberry Pi Pico
 
-### Raspberry Pi Pico Pinout
-![Raspberry_Pi_Pico_Pinout.png](.assets%2FRaspberry_Pi_Pico_Pinout.png)
-
 ### WifiManager Class
 ### Methods
 
