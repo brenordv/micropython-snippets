@@ -39,7 +39,7 @@ class ErrorLogManager:
 
     def log_error(self, error_message, error_object=None):
         """Logs an error message and an error object to a log file with a timestamp."""
-        timestamp = self._get_local_time()
+        timestamp = self._get_local_time().replace(":", "-").replace("/", "-")
         log_file = "{}/error_{}.log".format(self.log_folder, timestamp)
 
         log_data = {
