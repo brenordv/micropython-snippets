@@ -4,7 +4,7 @@ import ujson
 
 
 class ErrorLogManager:
-    def __init__(self, log_folder, ntp_helper = None):
+    def __init__(self, log_folder="logs", ntp_helper = None):
         """
         Initializes the ErrorLogManager with a log folder and an optional NTP helper.
         :param log_folder: The folder where the log files will be stored.

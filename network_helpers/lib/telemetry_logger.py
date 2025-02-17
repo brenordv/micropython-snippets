@@ -46,6 +46,10 @@ class TelemetryLoggerHttp:
         }
         return log_entry
 
+    def update_device_seq_id(self, device_seq_id):
+        """Update the device sequence ID."""
+        self.device_seq_id = device_seq_id
+
     def log(self, timestamp, level, message, **kwargs):
         """
         Add a log entry to the buffer.
@@ -61,9 +65,14 @@ class TelemetryLoggerHttp:
 
         self.log_buffer.append(log_entry)
 
-        print(f"[{level}] {message}")
+        if len(kwargs) == 0:
+            print(f"[{level}] {message}")
+        else:
+            print(f"[{level}] {message} | {kwargs}")
 
-        if self.instant_flush or len(self.log_buffer) >= self.batch_size or (time.time() - self.last_flush_time) >= self.flush_interval:
+        if self.instant_flush or \
+                len(self.log_buffer) >= self.batch_size or \
+                (time.time() - self.last_flush_time) >= self.flush_interval:
             self.flush()
 
     def flush(self):
