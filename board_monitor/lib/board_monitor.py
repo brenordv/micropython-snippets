@@ -56,14 +56,25 @@ class BoardMonitor:
         """
         return machine.freq()
 
-    def get_uptime(self):
+    def get_uptime(self, formatted = False):
         """
         Calculates the system uptime since the board was powered on or reset.
 
+        Args:
+            formatted (bool): If True, returns uptime in "DAYS.HOURS:MINUTES:SECONDS.MS" format.
+                              Otherwise, returns uptime in seconds.
+
         Returns:
-            float: Uptime in seconds.
+            float | str: Uptime in seconds (float) or formatted uptime (str).
         """
         uptime_ms = utime.ticks_diff(utime.ticks_ms(), self.start_time)
+        if formatted:
+            days = uptime_ms // 86_400_000
+            hours = (uptime_ms % 86_400_000) // 3_600_000
+            minutes = (uptime_ms % 3_600_000) // 60_000
+            seconds = (uptime_ms % 60_000) // 1000
+            milliseconds = uptime_ms % 1000
+            return f"{days}.{hours:02}:{minutes:02}:{seconds:02}.{milliseconds:03}"
         return uptime_ms / 1000  # Convert milliseconds to seconds
 
     def get_status(self):

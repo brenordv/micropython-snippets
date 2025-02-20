@@ -2,8 +2,8 @@ import utime
 from machine import Pin
 
 from lib.ds18x20_exceptions import Ds18x20Error
-import lib.drivers.onewire as onewire
-import lib.drivers.ds18x20 as ds18x20
+import lib.driver.onewire as onewire
+import lib.driver.ds18x20 as ds18x20
 
 
 class TemperatureSensor:

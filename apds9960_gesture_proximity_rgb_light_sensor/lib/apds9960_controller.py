@@ -1,8 +1,8 @@
 import utime
 
-from lib.drivers.apds9960 import APDS9960
+from lib.driver.apds9960 import APDS9960
 from lib.color_identifier import ColorIdentifier
-from lib.drivers.apds9960 import AGAIN_16
+from lib.driver.apds9960 import AGAIN_16
 
 
 class GestureDetectionSensor:

@@ -1,7 +1,7 @@
 from machine import Pin, I2C
 import utime
 
-from lib.drivers.vl6180x import Vl6180X
+from lib.driver.vl6180x import Vl6180X
 
 
 class LaserRangingSensorSensor:
