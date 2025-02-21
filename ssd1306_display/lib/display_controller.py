@@ -1,3 +1,5 @@
+import time
+
 from machine import Pin, I2C
 
 from lib.driver import ssd1306
@@ -45,15 +47,7 @@ class DisplayController:
 
         return True
 
-    def clear(self, flush=False):
-        self.display.fill(0)
-        if flush:
-            self._log("Clearing and flushing display")
-            self.display.show()
-        else:
-            self._log("Clearing display")
-
-    def write(self, text, line_num, align="left", print_log=True):
+    def _write(self, text, line_num, align="left", print_log=True):
         if not self._validate_text(text, line_num):
             return
 
@@ -72,6 +66,32 @@ class DisplayController:
             self._log(f"[LINE {line_num}] {text}")
 
         self.display.show()
+
+    def clear(self, flush=False):
+        self.display.fill(0)
+        if flush:
+            self._log("Clearing and flushing display")
+            self.display.show()
+        else:
+            self._log("Clearing display")
+
+    def write(self, text, line_num, align="left", print_log=True):
+        current_try = 1
+        max_tries = 3
+
+        while current_try <= max_tries:
+            try:
+                self._write(text, line_num, align, print_log)
+                return
+            except Exception as e:
+                if "[errno 110] etimedout" in str(e).lower():
+                    self._log(f"[ERROR] Timeout error while writing to display. Retrying...")
+                    time.sleep(1 * current_try)
+                    current_try += 1
+                else:
+                    raise e
+
+        self._log(f"[ERROR] Failed to write to display after {max_tries} tries")
 
     def progress_bar(self, value, line_num=None, max_value=1.0, print_log=True):
         if line_num is None:
