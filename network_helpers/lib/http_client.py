@@ -4,7 +4,7 @@ import gc
 
 
 class HttpClient:
-    def __init__(self, base_url="", timeout=5, retries=3):
+    def __init__(self, base_url="", timeout=30, retries=3):
         """
         Initialize the HTTP client.
 
