@@ -3,9 +3,12 @@ import time
 
 
 class NtpHelper:
-    def __init__(self, host=None, resync_period=3600):
+    def __init__(self, host=None, resync_period=3600, timeout=5):
         if host:
             ntptime.host = host
+
+        if timeout is not None and timeout > 0:
+            ntptime.timeout = timeout
 
         self.resync_period = resync_period
         self.last_sync = None
