@@ -7,12 +7,13 @@ import lib.driver.ds18x20 as ds18x20
 
 
 class TemperatureSensor:
-    def __init__(self, pin, temp_offset=0):
+    def __init__(self, pin, calibration=None):
         self.pin = Pin(pin)
         self.ds_sensor = ds18x20.DS18X20(onewire.OneWire(self.pin))
         self.roms = self.ds_sensor.scan()
         print("Found DS18X20 devices:", self.roms)
-        self.temp_offset = temp_offset
+        self.calibration = calibration
+        self.use_calibration = calibration is not None and all([key in calibration for key in ["scale", "offset"]])
         self.temperature = None
         self.last_error_message = None
 
@@ -22,7 +23,13 @@ class TemperatureSensor:
             # DS18X20 requires a delay after converting temperature
             utime.sleep_ms(750)
             if self.roms:
-                self.temperature = self.ds_sensor.read_temp(self.roms[0]) + self.temp_offset
+                raw_temperature = self.ds_sensor.read_temp(self.roms[0])
+
+                if self.use_calibration:
+                    self.temperature = (raw_temperature * self.calibration["scale"]) + self.calibration["offset"]
+                else:
+                    self.temperature = raw_temperature
+
                 return True
             else:
                 self.last_error_message = "No DS18X20 device found"
