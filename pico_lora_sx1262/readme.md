@@ -1,5 +1,3 @@
-> STILL TESTING.
-
 # Waveshare Pico LoRa SX1262 Controller
 This project provides a comprehensive LoRa communication controller for the Raspberry Pi Pico W with 
 Waveshare Pico-LoRa-SX1262 HAT. 
