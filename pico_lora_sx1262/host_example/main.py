@@ -1,12 +1,16 @@
 """
 Host-side utility to talk to a microcontroller over a serial TTY.
 
-It sends a framed "hello" line, then for ~10 seconds parses incoming lines for:
-- LoRa payloads framed by <LoRa-Message-Package>...</LoRa-Message-Package>
-- TX completion info framed by <Lora-System-Info-Tx-Done>...</Lora-System-Info-Tx-Done> (JSON)
+It continuously:
+- Sends a framed message every 15 seconds with hostname and message counter
+- Parses incoming lines for:
+  - LoRa payloads framed by <LoRa-Message-Package>...</LoRa-Message-Package>
+  - TX completion info framed by <Lora-System-Info-Tx-Done>...</Lora-System-Info-Tx-Done> (JSON)
+
+Runs until interrupted by user (Ctrl+C).
 """
 
-import sys, time, json, re, platform
+import sys, time, json, re, platform, socket
 
 PORT = "COM8"  # e.g. "COM5" (Windows), "/dev/ttyACM0" (Linux), "/dev/tty.usbmodemXXXX" (macOS)
 
@@ -45,7 +49,7 @@ def _read_lines(read_bytes, timeout_s=0.1):
 def _run_with_pyserial(port_hint=None):
     """
     Use pyserial to open a 115200-8N1 port, auto-selecting a likely device if needed,
-    send a framed greeting, then for ~10s print parsed LoRa RX and TX-DONE events.
+    continuously send messages every 15s and parse LoRa RX and TX-DONE events.
     """
     import serial
     from serial.tools import list_ports
@@ -74,21 +78,42 @@ def _run_with_pyserial(port_hint=None):
         return ser.read(n)
 
     try:
-        _send_frame(write_bytes, "hello from host")
-        t_end = time.time() + 10
-        while time.time() < t_end:
+        hostname = socket.gethostname()
+        message_count = 0
+        last_send_time = 0
+        
+        print(f"[info] Starting continuous communication. Press Ctrl+C to stop.")
+        print(f"[info] Hostname: {hostname}")
+        
+        while True:
+            current_time = time.time()
+            
+            # Send message every 15 seconds
+            if current_time - last_send_time >= 15:
+                message_count += 1
+                message = f"[{message_count}] Hello world from {hostname}"
+                _send_frame(write_bytes, message)
+                print(f"[sent] {message}")
+                last_send_time = current_time
+            
+            # Check for incoming messages
             for line in _read_lines(read_bytes, timeout_s=0.25):
                 if (m := rx_tag.search(line)):
                     print("LoRa RX:", m.group(1))
                 if (m := tx_tag.search(line)):
                     print("TX DONE:", json.loads(m.group(1)))
+            
+            time.sleep(0.1)  # Small delay to prevent busy-waiting
+            
+    except KeyboardInterrupt:
+        print("\n[info] Stopped by user.")
     finally:
         ser.close()
 
 def _run_with_posix_stdlib(path):
     """
     POSIX fallback without pyserial: open `path` and configure 115200-8N1 using
-    termios/select, send a framed greeting, then for ~10s print parsed events.
+    termios/select, continuously send messages every 15s and parse events.
     """
     # Pure-stdlib POSIX (Linux/macOS) fallback using termios/select
     import os, termios, tty, fcntl, select
@@ -126,10 +151,26 @@ def _run_with_posix_stdlib(path):
                     return b""
             return b""
 
-        _send_frame(write_bytes, "hello from host (POSIX)")
-        t_end = time.time() + 10
+        hostname = socket.gethostname()
+        message_count = 0
+        last_send_time = 0
         partial = b""
-        while time.time() < t_end:
+        
+        print(f"[info] Starting continuous communication (POSIX). Press Ctrl+C to stop.")
+        print(f"[info] Hostname: {hostname}")
+        
+        while True:
+            current_time = time.time()
+            
+            # Send message every 15 seconds
+            if current_time - last_send_time >= 15:
+                message_count += 1
+                message = f"[{message_count}] Hello world from {hostname}"
+                _send_frame(write_bytes, message)
+                print(f"[sent] {message}")
+                last_send_time = current_time
+            
+            # Check for incoming messages
             chunk = read_bytes(1024)
             if chunk:
                 partial += chunk
@@ -141,8 +182,10 @@ def _run_with_posix_stdlib(path):
                     if (m := tx_tag.search(s)):
                         print("TX DONE:", json.loads(m.group(1)))
             else:
-                time.sleep(0.02)
+                time.sleep(0.1)  # Small delay to prevent busy-waiting
 
+    except KeyboardInterrupt:
+        print("\n[info] Stopped by user (POSIX).")
     finally:
         os.close(fd)
 
