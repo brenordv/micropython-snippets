@@ -21,15 +21,18 @@ Just copy the `lib` folder to your board.
 ### Raspberry Pi Pico Pinout
 ![Raspberry_Pi_Pico_Pinout.png](.assets%2FRaspberry_Pi_Pico_Pinout.png)
 
+### Waveshare Pico-LoRa-SX1262 HAT Pinout
 ![Pico-LoRa-SX1262-868M-details-inter.jpg](.assets%2FPico-LoRa-SX1262-868M-details-inter.jpg)
 
-### Waveshare Pico-LoRa-SX1262 HAT Pinout
 The HAT connects to the Pico via SPI1 with the following pin mapping:
 - **SPI1**: SCK=GP10, MOSI=GP11, MISO=GP12
 - **CS/NSS**: GP3
 - **DIO1/IRQ**: GP20
 - **RST**: GP15
 - **BUSY**: GP2
+
+### Waveshare Pico-LoRa-SX1262 HAT Datasheet
+[DS_SX1261-2_V1.2](.assets%2FDS_SX1261-2_V1.2)
 
 ## Configuration
 The main script supports configurable LoRa parameters:
