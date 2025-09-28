@@ -12,6 +12,7 @@ Runs until interrupted by user (Ctrl+C).
 
 import sys, time, json, re, platform, socket
 
+# If you don't know, you can run: `py -m serial.tools.list_ports -v` to find out.
 PORT = "COM8"  # e.g. "COM5" (Windows), "/dev/ttyACM0" (Linux), "/dev/tty.usbmodemXXXX" (macOS)
 
 OPEN = "<LoRa-Message-Package>"

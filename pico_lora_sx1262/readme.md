@@ -10,9 +10,14 @@ and reception with callback-based event handling.
 Usually I create more of a controller/service/wrapper type of thing, but with this one I decided to use a different 
 approach and use the Pi Pico + LoRa Hat as a type of modem for LoRa. This way I can any other application with it.
 
+If you want, you can change the tags that are being used in the code to identify when the message is ready to be received.
+Think of the tags as envelopes.
+
+Right now, when the host sends a message to out LoRa modem, it waits for the closing tag before sending the message.
+
 ## Installation
 Just copy the `lib` folder to your board.
-<will update this later>
+Initialize LoRa Modem class and you're good to go.
 
 ## Hardware
 - Raspberry Pi Pico or Pico W
