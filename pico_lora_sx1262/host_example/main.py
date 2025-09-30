@@ -90,7 +90,7 @@ def _run_with_pyserial(port_hint=None):
             current_time = time.time()
             
             # Send message every 15 seconds
-            if current_time - last_send_time >= 15:
+            if current_time - last_send_time >= 1:
                 message_count += 1
                 message = f"[{message_count}] Hello world from {hostname}"
                 _send_frame(write_bytes, message)
