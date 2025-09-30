@@ -1,6 +1,6 @@
 import sys, uselect, utime, ujson
 from machine import Pin, SPI
-from sx1262 import SX1262
+from lib.ext_driver.sx1262 import SX1262
 
 
 # Choose your regional frequency (MHz) and LoRa params
