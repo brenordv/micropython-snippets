@@ -341,7 +341,7 @@ if __name__ == "__main__":
             async for m in client.messages():
                 print("RX:", m)
 
-        async def produce(interval_s=1.0):
+        async def produce(interval_s=0.1):
             counter = 0
             host = socket.gethostname()
             while True:
