@@ -5,6 +5,9 @@ from .modem import RxPacket  # noqa: F401
 
 ok = False  # Flag if at least one modem driver package is installed
 
+def _can_ignore_error(e):
+    return all(x in str(e) for x in ["no module named", "lora"])
+
 # Various lora "sub-packages"
 
 try:
@@ -12,7 +15,7 @@ try:
 
     ok = True
 except ImportError as e:
-    if "no module named 'lora." not in str(e):
+    if not _can_ignore_error(e):
         raise
 
 try:
@@ -20,7 +23,7 @@ try:
 
     ok = True
 except ImportError as e:
-    if "no module named 'lora." not in str(e) and not ok:
+    if not _can_ignore_error(e):
         raise
 
 try:
@@ -28,7 +31,7 @@ try:
 
     ok = True
 except ImportError as e:
-    if "no module named 'lora." not in str(e) and not ok:
+    if not _can_ignore_error(e):
         raise
 
 
